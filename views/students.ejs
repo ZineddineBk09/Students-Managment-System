@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" href="students.css">
+    <title>SMS - students</title>
+  </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&family=Roboto:ital,wght@1,300&display=swap");
+
+    * {
+      margin: 0;
+    }
+
+    body {
+      font-family: "Roboto", sans-serif;
+
+      background-image: url("../SU-Web-Banner.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      /* height: 100vh; */
+      overflow-y: hidden;
+    }
+
+    .container {
+      position: relative;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: flex;
+      min-height: 100%;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100vh;
+    }
+
+    .container__header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100px;
+      background-image: linear-gradient(
+        180deg,
+        rgb(6, 6, 49),
+        rgba(17, 7, 59, 0.61),
+        transparent
+      );
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      margin: 1rem 1rem;
+      border-radius: 50%;
+      height: 60px;
+      width: 60px;
+      object-fit: contain;
+    }
+
+    @import url("https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap");
+
+    .header {
+      color: white;
+      font-family: "Mochiy Pop P One", sans-serif;
+    }
+
+    @import url("https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&family=Roboto:ital,wght@1,300&display=swap");
+
+    .container__body {
+      margin-top: 250px;
+      color: wheat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      /* align-items: center; */
+    }
+
+   
+    .container__body{
+      margin-top: 150px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: row;
+    }
+
+  
+    button{
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 2rem 1rem;
+      border: none;
+      outline: none;
+      border-radius: 15px;
+      padding: 1rem;
+      width: 50vh;
+    }
+    button:hover{
+      transition: all ease-in 300ms;
+      transform: scale(1.1);
+      color: white;
+    }
+    
+button>img{
+  height: 100px;
+}
+
+    .add{
+      background:linear-gradient(to right,lightblue,blue);
+    }
+    .add:hover{  
+      background:linear-gradient(to right,rgb(128, 203, 228),rgb(0, 0, 92));
+    }
+
+    .update{
+      /* margin-left: 12rem; */
+      background:linear-gradient(to right,lightgreen,green); 
+    }
+    .update:hover{
+      background:linear-gradient(to right,rgb(105, 221, 105),rgb(1, 100, 1)); 
+    }
+
+    .remove{
+      /* margin-left: 22rem; */
+      background:linear-gradient(to right,rgb(235, 112, 112),red); 
+    }
+    .remove:hover{
+      background:linear-gradient(to right,rgb(221, 87, 87),rgb(136, 3, 3)); 
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="container__header">
+        <img
+          src="https://media.istockphoto.com/vectors/world-education-vector-id836073040?k=20&m=836073040&s=612x612&w=0&h=fzdqHwK61dRWMUFj7i2dFg9d730RePfQHRpLuvO4IkI="
+          alt=""
+          class="logo"
+        />
+        <h1 class="header">SMS</h1>
+      </div>
+      <div class="container__body">
+        <button class="add"><img src="https://static.thenounproject.com/png/847977-200.png" alt=""><h1>Add A Student</h1></button>
+
+        <button class="update"><img src="https://static.thenounproject.com/png/936647-200.png" alt=""><h1>Update A Student</h1></button>
+
+        <button class="remove"><img src="https://static.thenounproject.com/png/847983-200.png" alt=""><h1>Delete A Student</h1></button>
+      </div>
+
+    <!-- JavaScript -->
+    <script>   
+    const ADD=document.querySelector('.add')
+    const UPDATE=document.querySelector('.update')
+    const REMOVE=document.querySelector('.remove')
+
+    ADD.addEventListener('click',function(){
+      window.location.href='http://localhost:3000/sections/students/Add-student'
+    })
+
+    UPDATE.addEventListener('click',function(){
+      window.location.href='http://localhost:3000/sections/students/Update-student'
+    })
+
+    REMOVE.addEventListener('click',function(){
+      window.location.href='http://localhost:3000/sections/students/Delete-student'
+    })
+</script>
+  </body>
+</html>
+
+ <!-- add : https://static.thenounproject.com/png/847977-200.png -->
+ <!-- remove : https://static.thenounproject.com/png/847983-200.png -->
+ <!-- update : https://static.thenounproject.com/png/936647-200.png -->
