@@ -17,7 +17,7 @@
     body {
       font-family: "Roboto", sans-serif;
 
-      background-image: url("../SU-Web-Banner.jpg");
+      background-image: url("https://www.swansea.ac.uk/study/our-student-stories/SU-Web-Banner.jpg");
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
@@ -160,7 +160,7 @@
       margin-bottom: 16px;
     } 
 
-    input{
+    input,select{
     border: none;
     outline: none;
     padding: 8px 20px;
@@ -220,6 +220,11 @@
     .annuler:hover{
       background-color: red;
     }
+
+    .two-btns{
+      display: flex;
+      justify-content: center;
+    }
   </style>
   <body>
     <div class="container">
@@ -251,8 +256,11 @@
                   <input type="text" name="section" id="section" placeholder="Section..." required>
                   <label for="groupe">Groupe</label>
                   <input type="number" name="groupe" id="groupe" placeholder="Groupe..." required>
-                  <button class="ajouter" disabled>Ajouter</button>
-                  <button class="annuler">Annuler</button>
+                  <div class="two-btns">
+
+                    <button class="ajouter" disabled>Mis à jour</button>
+                    <button class="annuler">Annuler</button>
+                  </div>
               </div>
 
           </div>
@@ -280,7 +288,8 @@
       })
       
       Ajouter.addEventListener('click',function(){
-          confirm("Are you sure ?")
+        alert("Can't update this student !!" )  
+        confirm("Are you sure ?")
        })
 
       </script>

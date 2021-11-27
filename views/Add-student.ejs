@@ -17,16 +17,16 @@
     body {
      
       /* height: 100vh; */
+      background-image: url("https://www.swansea.ac.uk/study/our-student-stories/SU-Web-Banner.jpg");
       overflow-y: scroll;
-    }
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;    }
 
     .container {
       font-family: "Roboto", sans-serif;
 
-background: url("./SU-Web-Banner.jpg");
-background-repeat: no-repeat;
-background-size: cover;
-background-position: center;
+      
       position: relative;
       background-color: rgba(0, 0, 0, 0.5);
       display: flex;
@@ -161,7 +161,7 @@ background-position: center;
       margin-bottom: 16px;
     } 
 
-    input{
+    input,select{
     border: none;
     outline: none;
     padding: 8px 20px;
@@ -221,6 +221,11 @@ background-position: center;
     .annuler:hover{
       background-color: red;
     }
+
+    .two-btns{
+      display: flex;
+      justify-content: center;
+    }
   </style>
   <body>
     <div class="container">
@@ -245,15 +250,18 @@ background-position: center;
                 </div>
 
                   <label for="nom">Nom</label>
-                  <input type="text" name="nom" id="nom" placeholder="Nom..." required>
+                  <input type="text" name="nom" id="nom" placeholder="Nom..." >
                   <label for="prenom">Prenom</label>
-                  <input type="text" name="prenom" id="prenom" placeholder="Prenom..." required>
+                  <input type="text" name="prenom" id="prenom" placeholder="Prenom...">
                   <label for="section">Section</label>
-                  <input type="text" name="section" id="section" placeholder="Section..." required>
+                  <input type="text" name="section" id="section" placeholder="Section..." >
                   <label for="groupe">Groupe</label>
-                  <input type="number" name="groupe" id="groupe" placeholder="Groupe..." required>
-                  <button class="ajouter" disabled>Ajouter</button>
-                  <button class="annuler">Annuler</button>
+                  <input type="number" name="groupe" id="groupe" placeholder="Groupe..." >
+                  <div class="two-btns">
+                    <button class="annuler">Annuler</button>
+
+                    <button class="ajouter" disabled>Ajouter</button>
+                  </div>
               </div>
 
           </div>
@@ -276,12 +284,14 @@ background-position: center;
           console.log('clicked')
       })
       matricule.addEventListener('change',function(){
+        alert("Student Already exixts!!")
+
         console.log(matricule.value.toString())
         if(matricule.value.toString().length>11)Ajouter.removeAttribute('disabled');
       })
       
        Ajouter.addEventListener('click',function(){
-          confirm("Are you sure ?")
+          Alert("Student Already exists!!")
        })
       </script>
   </body>

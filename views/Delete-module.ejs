@@ -17,7 +17,7 @@
     body {
       font-family: "Roboto", sans-serif;
 
-      background-image: url("../public/SU-Web-Banner.jpg");
+      background-image: url("https://www.swansea.ac.uk/study/our-student-stories/SU-Web-Banner.jpg");
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
@@ -136,7 +136,7 @@
       margin-bottom: 16px;
     } 
 
-    input{
+    select,input{
     border: none;
     outline: none;
     padding: 8px 20px;
@@ -196,6 +196,11 @@
     .annuler:hover{
       background-color: red;
     }
+
+    .two-btns{
+      display: flex;
+      justify-content: center;
+    }
   </style>
   <body>
     <div class="container">
@@ -209,21 +214,33 @@
       </div>
       <div class="container__body">
           <div class="container__bodyElement">
-              <h1>Add A Module : </h1>
+              <h1>Delete A Module : </h1>
                   <form action="/sections/modules/Delete-module" method="post">
                    <div class="container__bodyElement__matricule">
 
                   <label for="codeM" >Code Module</label>
-                  <input type="text" name="codeM" id="codeM" placeholder="Code Section..." required>
+                  <!-- <input type="text" name="codeM" id="codeM" placeholder="Code Section..." required> -->
+                  <select name="codeM" id="codeM" placeholder="Code Section..." required>
+                    <option >Code Section...</option>
+                    <option value="100">Systéme d'information</option>
+                    <option value="101">Réseau</option>
+                    <option value="102">Compilation</option>
+                    <option value="103">Génie Logiciels</option>
+                  </select>      
                   <button class="recherche">Recherche</button>
                 </div>
 
                   <label for="libelle">Libellé</label>
-                  <input type="text" name="libelle" id="libelle" placeholder="Libellé..." required>
+                  <input type="text" name="libelle" id="libelle" placeholder="Libellé...">
                   <label for="coef">Coefficient</label>
-                  <input type="number" name="coef" id="coef" placeholder="Groupe..." required>
-                  <button class="ajouter" disabled>Ajouter</button>
-                  <button class="annuler">Annuler</button>
+                  <input type="number" name="coef" id="coef" placeholder="Groupe...">
+                  <label for="teacher">Teacher Code</label>
+                  <input type="number" name="teacher" id="teacher" placeholder="teacher code...">
+                  <div class="two-btns">
+
+                    <button class="ajouter" disabled>Supprimer</button>
+                    <button class="annuler">Annuler</button>
+                  </div>
                 </form>
 
           </div>
@@ -234,7 +251,7 @@
       //--------------------Add A Student-----------------------
 
     const Recherche=document.querySelector('.recherche')
-    const CodeS=document.getElementById('CodeM')
+    const CodeM=document.getElementById('codeM')
     const Libelle=document.getElementById('libelle')
     const Ajouter=document.querySelector('.ajouter')
     const Annuler=document.querySelector('.annuler')
@@ -243,13 +260,13 @@
       Recherche.addEventListener('click',function(){
           console.log('clicked')
       })
-      CodeS.addEventListener('change',function(){
-        console.log(matricule.value.toString())
-        if(CodeS.value.toString().length>11)Ajouter.removeAttribute('disabled');
+      CodeM.addEventListener('change',function(){
+        alert('Module does not exists!!')
+        if(CodeM.value)Ajouter.removeAttribute('disabled');
       })
       
       Annuler.addEventListener('click',function(){
-          CodeS.value=""
+          CodeM.value=""
           Libelle.value=""
           Coef.value=0
 

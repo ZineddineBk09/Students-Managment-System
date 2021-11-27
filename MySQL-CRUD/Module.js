@@ -14,7 +14,7 @@ connection.connect(function (err) {
 });
 
 const INSERT_MODULE = function (CodeM, LibelleM, coef, codeEns) {
-  var sql = `INSERT INTO Module (CodeM, LibelleM, Coef, CodeEns) VALUES (${CodeM},${LibelleM},},${coef},${codeEns})`;
+  var sql = `INSERT INTO Module (CodeM, LibelleM, Coef, CodeEns) VALUES ('${CodeM}','${LibelleM}',${coef},${codeEns})`;
 
   connection.query(sql, function (err, result) {
     if (err) throw err;
@@ -23,8 +23,8 @@ const INSERT_MODULE = function (CodeM, LibelleM, coef, codeEns) {
 };
 
 const UPDATE_MODULE = function (CodeM, LibelleM, coef, codeEns) {
-  var sql = `UPDATE Module SET LibelleM = ${LibelleM},coef = ${coef},codeEns = ${codeEns} WHERE CodeM = ${CodeM}`;
-  con.query(sql, function (err, result) {
+  var sql = `UPDATE Module SET LibelleM = '${LibelleM}',coef = ${coef},codeEns = ${codeEns} WHERE CodeM = ${CodeM}`;
+  connection.query(sql, function (err, result) {
     if (err) throw err;
     console.log(result.affectedRows + " record(s) updated");
   });

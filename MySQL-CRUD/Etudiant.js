@@ -16,14 +16,12 @@ connection.connect(function (err) {
 const INSERT_ETUDIANT = function (matricule, nom, prenom, grp, codeS) {
   var sql = `INSERT INTO Etudiant (Matricule, Nom, Prenom, Groupe, CodeS) VALUES (${matricule},'${nom}','${prenom}',${grp},'${codeS}')`;
 
-  connection.query(sql, function (err, result) {
-    if (err) throw err;
-  });
+  connection.query(sql)
 };
 
 const UPDATE_ETUDIANT = function (matricule, nom, prenom, grp, codeS) {
-  var sql = `UPDATE Etudiant SET Nom = ${nom},Prenom = ${prenom},Groupe = ${grp},CodeS = ${codeS} WHERE Matricule = ${matricule}`;
-  con.query(sql, function (err, result) {
+  var sql = `UPDATE Etudiant SET Nom = '${nom}',Prenom = '${prenom}',Groupe = ${grp},CodeS = '${codeS}' WHERE Matricule = ${matricule}`;
+  connection.query(sql, function (err, result) {
     if (err) throw err;
     console.log(result.affectedRows + " record(s) updated");
   });

@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 //const popup = require("node-popup");
-const PORT = 3000;
+const PORT = 4000;
 
 // set the view engine to ejs
 app.set("view engine", "ejs");
@@ -18,6 +18,13 @@ const {
   DELETE_ETUDIANT,
   SELECT_ETUDIANT,
 } = require("./MySQL-CRUD/Etudiant");
+
+//MYSQL functions
+const {
+  INSERT_MODULE,
+  UPDATE_MODULE,
+  DELETE_MODULE,
+} = require("./MySQL-CRUD/Module");
 
 app.get("/", function (req, res) {
   res.render("index");
@@ -42,13 +49,13 @@ app.post("/sections/students/Add-student", function (req, res) {
   try {
     INSERT_ETUDIANT(
       req.body.matricule,
-      req.body.nom,
-      req.body.prenom,
-      req.body.groupe,
-      req.body.section
+      (req.body.nom || null),
+      (req.body.prenom || null),
+      (req.body.groupe || null),
+      (req.body.section || null)
     );
   } catch (error) {
-    console.log("SQL INSERTION ERROR : ", error);
+    console.log("SQL INSERTION ERROR : ", error.sqlMessage);
   }
 });
 
@@ -59,15 +66,15 @@ app.get("/sections/students/Update-student", function (req, res) {
 app.post("/sections/students/Update-student", function (req, res) {
   console.log("New Student : ", req.body);
   try {
-    Update_ETUDIANT(
+    UPDATE_ETUDIANT(
       req.body.matricule,
-      req.body.nom,
-      req.body.prenom,
-      req.body.groupe,
-      req.body.section
+      (req.body.nom || null),
+      (req.body.prenom || null),
+      (req.body.groupe || null),
+      (req.body.section || null)
     );
   } catch (error) {
-    console.log("SQL INSERTION ERROR");
+    console.log(error);
   }
 });
 
@@ -98,12 +105,11 @@ app.get("/sections/modules/Add-module", function (req, res) {
 app.post("/sections/modules/Add-module", function (req, res) {
   console.log("New Student : ", req.body);
   try {
-    INSERT_ETUDIANT(
-      req.body.matricule,
-      req.body.nom,
-      req.body.prenom,
-      req.body.groupe,
-      req.body.section
+    INSERT_MODULE(
+      parseInt(req.body.codeM),
+      (req.body.libelle || null),
+      (req.body.coef || null),
+      (req.body.teacher || null)
     );
   } catch (error) {
     console.log("SQL INSERTION ERROR");
@@ -117,15 +123,14 @@ app.get("/sections/modules/Update-module", function (req, res) {
 app.post("/sections/modules/Update-module", function (req, res) {
   console.log("New Student : ", req.body);
   try {
-    Update_ETUDIANT(
-      req.body.matricule,
-      req.body.nom,
-      req.body.prenom,
-      req.body.groupe,
-      req.body.section
+    UPDATE_MODULE(
+      parseInt(req.body.codeM),
+      (req.body.libelle || null),
+      (req.body.coef || null),
+      (req.body.teacher || null)
     );
   } catch (error) {
-    console.log("SQL INSERTION ERROR");
+    console.log(error);
   }
 });
 
@@ -136,7 +141,7 @@ app.get("/sections/modules/Delete-module", function (req, res) {
 app.post("/sections/modules/Delete-module", function (req, res) {
   console.log("New Student : ", req.body);
   try {
-    DELETE_ETUDIANT(req.body.matricule);
+    DELETE_MODULE(parseInt(req.body.codeM));
   } catch (error) {
     console.log("SQL INSERTION ERROR");
   }

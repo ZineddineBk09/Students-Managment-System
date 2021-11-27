@@ -17,7 +17,7 @@
     body {
       font-family: "Roboto", sans-serif;
 
-      background-image: url("../SU-Web-Banner.jpg");
+      background-image: url("https://www.swansea.ac.uk/study/our-student-stories/SU-Web-Banner.jpg");
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
@@ -160,7 +160,7 @@
       margin-bottom: 16px;
     } 
 
-    input{
+    input,select{
     border: none;
     outline: none;
     padding: 8px 20px;
@@ -220,6 +220,11 @@
     .annuler:hover{
       background-color: red;
     }
+
+    .two-btns{
+      display: flex;
+      justify-content: center;
+    }
   </style>
   <body>
     <div class="container">
@@ -251,8 +256,11 @@
                   <input type="text" name="section" id="section" placeholder="Section..." >
                   <label for="groupe">Groupe</label>
                   <input type="number" name="groupe" id="groupe" placeholder="Groupe..." >
-                  <button class="ajouter" disabled>Ajouter</button>
-                  <button class="annuler">Annuler</button>
+                  <div class="two-btns">
+
+                    <button class="ajouter" disabled>Supprimer</button>
+                    <button class="annuler">Annuler</button>
+                  </div>
               </div>
 
           </div>
@@ -272,9 +280,10 @@
     const Groupe=document.getElementById('groupe')
 
       Recherche.addEventListener('click',function(){
-          console.log('clicked')
+        console.log('clicked')
       })
       matricule.addEventListener('change',function(){
+        alert("Student doesn't exist!!")
         console.log(matricule.value.toString())
         if(matricule.value.toString().length>11)Ajouter.removeAttribute('disabled');
       })
